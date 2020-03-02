@@ -47,19 +47,14 @@ public class HomePage {
         this.driver = driver;
     }
 
-    // metoda na dodawanie nazwy miasta w przeglądarce;
     public HomePage setCityHotel(String cityName) {
         searchSpan.click();
         searchCityInput.sendKeys(cityName);
-        // zastąpienie thread.sleep - trzeba znalezc elementy na ktory mamy czekac i zastosowac do niego metode z helpera;
-        // By locationLabel = By.xpath("//div[@class='select2-result-label']");
-        // helper.waitForElementToBeDisplayed(locationLabel);
         helper.waitForElementToBeDisplayed(selectResult);
         searchCityInput.sendKeys(Keys.ENTER);
         return this;
     }
 
-    // metoda na dodawanie daty pobytu w hotelu;
     public HomePage setDateRange(String checkInDate, String checkOutDate) {
         checkInInput.sendKeys(checkInDate);
         checkOutInput.sendKeys(checkOutDate);
@@ -67,25 +62,22 @@ public class HomePage {
         return this;
     }
 
-    // metoda dodająca liczbę pasażerów;
-    // otwieramy okienkto w którym możemy dodawać rodzica itp;
-
     public HomePage openTravellersModel() {
         travellersInput.click();
         helper.waitForElementToBeDisplayed(adultPlusBtn);
         return this;
     }
-    // metoda dodaje osoby dorosłe (podobnie było by z odejmowaniem);
+
     public HomePage addAdult() {
         adultPlusBtn.click();
         return this;
     }
-    // metoda dodaje dzieci;
+
     public HomePage addChild() {
         childPlusBtn.click();
         return this;
     }
-    // metoda naciska przycisk search;
+
     public ResultPage performSearch() {
         searchButton.click();
         return new ResultPage(driver);
